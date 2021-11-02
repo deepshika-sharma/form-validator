@@ -20,6 +20,8 @@
             type="text"
             name="full-name"
             id="full-name"
+            minlength="3"
+            maxlength="100"
             required
             placeholder="Full Name"
           />
@@ -69,7 +71,9 @@
             name="password"
             id="password"
             minlength="8"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             placeholder="Create password (Min. 8 characters)"
+            title="Please include at least 1 uppercase character, 1 lowercase character and 1 number"
             required
           />
         </div>
@@ -82,7 +86,6 @@
             name="confirm-password"
             id="confirm-password"
             placeholder="Confirm Password"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             required
           />
         </div>

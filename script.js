@@ -7,35 +7,63 @@ const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirm-password");
 const message = document.querySelector(".message");
 
-confirmPassword.addEventListener("input", () => {
-  if (password.value === confirmPassword.value) {
-    confirmPassword.style.border = "1px solid green";
-  } else {
-    confirmPassword.style.border = "1px solid red";
-  }
-});
+let isValid = false;
+let passwordsMatch = false;
 
-confirmPassword.addEventListener("change", () => {
+const validateForm = () => {
+  // Using Constraint API
+  isValid = form.checkValidity();
+  // Style Message
+  if (!isValid) {
+    message.textContent = "Please fill out all fields";
+    message.style.color = "red";
+    message.style.border = "1px solid red";
+    return;
+  }
+
+  // Check password match
   if (password.value === confirmPassword.value) {
+    passwordsMatch = true;
     confirmPassword.style.border = "1px solid green";
-    message.textContent = "Don't Hesitate";
-    message.style.color = "black";
   } else {
+    passwordsMatch = false;
     message.textContent = "Passwords don't match";
     message.style.color = "red";
+    message.style.border = "1px solid red";
+    password.style.border = "1px solid red";
     confirmPassword.style.border = "1px solid red";
+    return;
   }
-});
 
-form.addEventListener("submit", () => {
-  message.textContent = "Successfully Registered";
-  message.style.color = "green";
-  console.log({
+  // If form is valid and passwords match
+  if (passwordsMatch && isValid) {
+    message.textContent = "Successfully Registered";
+    message.style.color = "green";
+    message.style.border = "1px solid green";
+    password.style.border = "1px solid green";
+  }
+};
+
+const storeFormData = () => {
+  const user = {
     name: fullName.value,
     number: number.value,
     email: email.value,
     url: url.value,
     password: password.value,
-  });
-  form.reset();
-});
+  };
+  console.log(user);
+};
+
+const processFormData = (e) => {
+  e.preventDefault();
+  // Validate Form
+  validateForm();
+  // Submit Data if valid
+  if (isValid && passwordsMatch) {
+    storeFormData();
+  }
+};
+
+// Event Listener
+form.addEventListener("submit", processFormData);
