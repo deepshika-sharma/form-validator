@@ -1,0 +1,91 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Form Container */
+.form-container {
+  background: whitesmoke;
+  width: 40%;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input */
+input {
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid rgb(240, 117, 117);
+}
+
+input:focus {
+  outline: none;
+}
+
+input:valid {
+  border: 1px solid green;
+}
+
+/* Button */
+button {
+  width: 100%;
+  margin: 10px auto;
+  padding: 15px;
+  font-size: 1.5em;
+  background: #000;
+  color: white;
+  border: none;
+  /* border-radius: 5px; */
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Error/ Success Message */
+.message {
+  border: 1px solid orange;
+  padding: 15px;
+  font-size: 1.5em;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Media Query */
+@media screen and (max-width: 900px) {
+  .form-container {
+    width: 75%;
+  }
+}
